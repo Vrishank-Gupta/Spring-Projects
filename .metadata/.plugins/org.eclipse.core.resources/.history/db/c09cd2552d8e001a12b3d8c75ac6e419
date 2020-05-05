@@ -1,0 +1,13 @@
+package com.vrishank;
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+
+//alternate of creating config xml
+
+@Configuration
+@ComponentScan("com.vrishank")
+public class SportConfig {
+
+}

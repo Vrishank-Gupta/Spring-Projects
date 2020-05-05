@@ -1,0 +1,6 @@
+package com.vrishank;
+public interface Coach {
+	
+	public String getDailyWorkout();
+
+}

@@ -1,0 +1,34 @@
+package com.vrishank;
+
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+public class AnnotationBeanScopeDemoApp {
+
+	public static void main(String[] args) {
+		
+		//load spring config file
+		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+		
+		
+		//get bean
+		Coach coach = context.getBean("tennisCoach",Coach.class);
+
+		Coach alphaCoach = context.getBean("tennisCoach",Coach.class);
+		
+		
+		//check if they are same or not
+		
+		System.out.println("Fortune:--   "+coach.getDailyFortune());
+		
+		boolean result = (coach == alphaCoach);
+		System.out.println("Same:- "+result);
+
+		System.out.println("Memory Location of first:- " + coach);
+		
+		System.out.println("Memory loc of second:- " + alphaCoach);
+		
+		 context.close();
+
+	}
+
+}

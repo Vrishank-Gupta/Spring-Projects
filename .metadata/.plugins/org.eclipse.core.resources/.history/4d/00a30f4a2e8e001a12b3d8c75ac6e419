@@ -1,0 +1,29 @@
+package com.vrishank;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+
+//alternate of creating config xml
+
+@Configuration
+//@ComponentScan("com.vrishank")
+public class SportConfig {
+
+	//define bean for sadFortuneService
+	@Bean
+	public FortuneService sadFortuneService()
+	{
+		return new SadFortuneService();
+	}
+		
+	
+	//define bean for SwimCoach and inject dependency
+	@Bean
+	public Coach sadSwimCoach()
+	{
+		return new SwimCoach(sadFortuneService());
+	}
+	
+}

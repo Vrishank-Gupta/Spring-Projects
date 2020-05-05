@@ -1,0 +1,11 @@
+package com.vrishank;
+
+public class NewFortune implements FortuneService {
+
+	@Override
+	public String getFortune() {
+		// TODO Auto-generated method stub
+		return "new Fortuen";
+	}
+
+}
