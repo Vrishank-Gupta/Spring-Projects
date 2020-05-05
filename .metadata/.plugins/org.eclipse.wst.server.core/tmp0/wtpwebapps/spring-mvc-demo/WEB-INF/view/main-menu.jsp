@@ -18,6 +18,12 @@
 		<h2>
 			<a href="student/showForm">Student Form</a>
 		</h2>
+		
+		<br><br>
+		
+		<h2>
+			<a href="customer/showForm">Customer Form</a>
+		</h2>
 	
 	</body>
 </html>

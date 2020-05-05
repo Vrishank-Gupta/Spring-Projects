@@ -36,6 +36,8 @@
 		Others<form:checkbox path="operatingSystems" value="Others.."/>
 		
 		
+		<br><br>
+		
 		<input type="submit" value="Submit"/>	
 	</form:form>
 
