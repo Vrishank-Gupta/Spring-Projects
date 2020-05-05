@@ -1,7 +1,0 @@
-package com.vrishank;
-import java.util.*;
-public interface Coach {
-	
-	public String getDailyWorkout();
-
-}
