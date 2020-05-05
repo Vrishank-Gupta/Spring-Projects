@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <title>Customer Registration Form</title>
 
 <style>
@@ -19,7 +18,7 @@
 		Enter First Name: <form:input path="firstName"/>
 		<br> <br>	
 		
-		Enter Last Name(*):  <form:input path="lastName"/>
+		Enter Last Name: <form:input path="lastName"/>
 		<form:errors path="lastName" cssClass="error"/>
 		
 		<br> <br>

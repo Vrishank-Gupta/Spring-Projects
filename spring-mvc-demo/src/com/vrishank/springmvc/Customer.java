@@ -7,14 +7,13 @@ import javax.validation.constraints.Size;
 public class Customer {
 	private String firstName;
 	
-	@NotNull()
-	@Size(min = 1, message = "is Required")
+	@NotNull(message="is required")
+	@Size(min=1, message="is required")
 	private String lastName;
 
 	
-	
-	public Customer() {
-	}
+//	public Customer() {
+//	}
 
 	public String getFirstName() {
 		return firstName;
@@ -31,8 +30,5 @@ public class Customer {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	
-	
-	
 
 }
