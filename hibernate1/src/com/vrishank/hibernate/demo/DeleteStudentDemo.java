@@ -7,12 +7,12 @@ import org.hibernate.cfg.Configuration;
 
 import com.vrishank.hibernate.demo.entity.Student;
 
-public class UpdateStudentDemo {
+public class DeleteStudentDemo {
 
 	public static void main(String[] args) {
 		
 		
-		//get Session factory, only one in the project
+		//get Session factory
 		SessionFactory factory = new Configuration()
 									.configure("hibernate.cfg.xml")
 									.addAnnotatedClass(Student.class)
@@ -24,36 +24,23 @@ public class UpdateStudentDemo {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			//update the single object in database
-			
-			int id = 1;
-			
-			//start transaction 
+			//Delete the object from database
+			int id = 2;
+
+			//start transaction
 			session.beginTransaction();
 			
-			
-			//get object
+			//get student object and delete approach 1
 			Student student = session.get(Student.class, id);
 			System.out.println(student);
-			//update object
-			student.setFirstName("Vishu");
-			
-			//commit
-			session.getTransaction().commit();
-			
-			/////////////////////OR/////////////////////
+//			session.delete(student);
 			
 			
-			session = factory.getCurrentSession();
-			//updating multiple
-			//start transaction 
-			session.beginTransaction();
-		
-			//create query
-			session.createQuery("update Student s set s.email='vishuGupta@gmail.com' where s.firstName ='Vishu'").executeUpdate();
 			
-			//update object
-			student.setFirstName("Vishu");
+			//approach 2
+			session.createQuery("delete from Student where id=3").executeUpdate();
+			
+			System.out.println("Deleted..");
 			
 			//commit
 			session.getTransaction().commit();
