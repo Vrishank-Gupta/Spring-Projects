@@ -1,0 +1,14 @@
+initialising hibernate here connecting to jdbc and add data to table
+
+
+got hibernate-config from course
+downloaded jars from hibernate orm
+
+downloaded jar from jdbc mysql
+
+
+
+database:-
+user :- hbstudent
+password:- hbstudent
+
