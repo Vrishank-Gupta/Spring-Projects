@@ -1,14 +1,13 @@
 package com.vrishank.hibernate.demo;
 
 import org.hibernate.Session;
-import java.util.List;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 
 import com.vrishank.hibernate.demo.entity.Student;
 
-public class QueryStudentDemo {
+public class UpdateStudentDemo {
 
 	public static void main(String[] args) {
 		
@@ -25,37 +24,42 @@ public class QueryStudentDemo {
 		Session session = factory.getCurrentSession();
 		
 		try {
-			//query the object in database
+			//update the single object in database
 			
+			int id = 1;
 			
-
-			//start transaction
+			//start transaction 
 			session.beginTransaction();
 			
-			//query students
-//			List<Student> students = session.createQuery("from Student").getResultList();   //use actual class names
+			
+			//get object
+			Student student = session.get(Student.class, id);
+			System.out.println(student);
+			//update object
+			student.setFirstName("Vishu");
+			
+			//commit
+			session.getTransaction().commit();
 			
 			
 			
-			List<Student> students = session.createQuery("from Student s where s.lastName='Gupta' ").getResultList();   //use actual class names
-
 			
-			//display
-			displayStudents(students);
-					
+			session = factory.getCurrentSession();
+			//updating multiple
+			//start transaction 
+			session.beginTransaction();
+		
+			//create query
+			session.createQuery("update Student s set s.email='vishuGupta@gmail.com' where s.firstName ='Vishu'").executeUpdate();
+			
+			//update object
+			student.setFirstName("Vishu");
 			
 			//commit
 			session.getTransaction().commit();
 			
 		} finally {
 			session.close();
-		}
-	}
-
-	private static void displayStudents(List<Student> students) {
-		for(Student student : students)
-		{
-			System.out.println(student);
 		}
 	}
 
