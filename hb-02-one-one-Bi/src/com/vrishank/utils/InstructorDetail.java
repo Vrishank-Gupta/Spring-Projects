@@ -25,7 +25,12 @@ public class InstructorDetail {
 	@Column(name = "hobby")
 	private String hobby;
 
-	@OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL)  //from instructorDetail field in Instructor class, now its bidirectional mapping
+//	@OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL) //for cascading all operations
+	
+	
+	//for all operations except delete
+	@OneToOne(mappedBy = "instructorDetail",
+			cascade = {CascadeType.MERGE,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST})  //from instructorDetail field in Instructor class, now its bidirectional mapping
 	private Instructor instructor;
 
 	

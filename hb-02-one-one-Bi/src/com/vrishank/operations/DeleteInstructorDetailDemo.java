@@ -8,7 +8,7 @@ import org.hibernate.cfg.Configuration;
 import com.vrishank.utils.Instructor;
 import com.vrishank.utils.InstructorDetail;
 
-public class GetInstructorDetailDemo {
+public class DeleteInstructorDetailDemo {
 
 	public static void main(String[] args) {
 		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
@@ -25,11 +25,12 @@ public class GetInstructorDetailDemo {
 			
 			session.beginTransaction();
 			
-			int id = 29;
+			int id = 3;
 			//get instructor detail object
 			InstructorDetail instructorDetail = session.get(InstructorDetail.class, id);
 			
 			
+			instructorDetail.getInstructor().setInstructorDetail(null); //for breaking bidirectional linking
 			//print InstructorDetail
 			System.out.println(instructorDetail);
 			
@@ -37,6 +38,10 @@ public class GetInstructorDetailDemo {
 			
 			//print associated Instructor
 			System.out.println(instructorDetail.getInstructor());
+			
+			
+			//cascade Delete instructor as well//only when cascadetype.all is selected in class definition
+			session.delete(instructorDetail);
 			
 			session.getTransaction().commit();
 		} catch (Exception e) {
