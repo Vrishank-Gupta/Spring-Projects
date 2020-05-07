@@ -1,8 +1,6 @@
 package com.vrishank.utils;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -11,29 +9,41 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "instructor_detail")
+@Table(name="instructor_detail")
 public class InstructorDetail {
+
+	// annotate the class as an entity and map to db table
+	
+	// define the fields
+	
+	// annotate the fields with db column names
+	
+	// create constructors
+	
+	// generate getter/setter methods
+	
+	// generate toString() method
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id")
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@Column(name="id")
 	private int id;
 	
-	@Column(name= "youtube_channel")
-	private String youtube_channel;
+	@Column(name="youtube_channel")
+	private String youtubeChannel;
 	
-	@Column(name = "hobby")
+	@Column(name="hobby")
 	private String hobby;
-
-//	@OneToOne(mappedBy = "instructorDetail",cascade = CascadeType.ALL) //for cascading all operations
 	
+	// add new field for instructor (also add getter/setters)
 	
-	//for all operations except delete
-	@OneToOne(mappedBy = "instructorDetail",
-			cascade = {CascadeType.MERGE,CascadeType.REFRESH, CascadeType.DETACH, CascadeType.PERSIST})  //from instructorDetail field in Instructor class, now its bidirectional mapping
+	// add @OneToOne annotation
+	
+	@OneToOne(mappedBy="instructorDetail", 
+			cascade={CascadeType.DETACH, CascadeType.MERGE, CascadeType.PERSIST,
+						CascadeType.REFRESH})
 	private Instructor instructor;
 
-	
 	
 	public Instructor getInstructor() {
 		return instructor;
@@ -46,38 +56,31 @@ public class InstructorDetail {
 	public InstructorDetail() {
 		
 	}
-	
-	public InstructorDetail(String youtube_channel, String hobby) {
-		super();
-		this.youtube_channel = youtube_channel;
+
+	public InstructorDetail(String youtubeChannel, String hobby) {
+		this.youtubeChannel = youtubeChannel;
 		this.hobby = hobby;
 	}
-
 
 	public int getId() {
 		return id;
 	}
 
-
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
-	public String getYoutube_channel() {
-		return youtube_channel;
+	public String getYoutubeChannel() {
+		return youtubeChannel;
 	}
 
-
-	public void setYoutube_channel(String youtube_channel) {
-		this.youtube_channel = youtube_channel;
+	public void setYoutubeChannel(String youtubeChannel) {
+		this.youtubeChannel = youtubeChannel;
 	}
-
 
 	public String getHobby() {
 		return hobby;
 	}
-
 
 	public void setHobby(String hobby) {
 		this.hobby = hobby;
@@ -85,10 +88,7 @@ public class InstructorDetail {
 
 	@Override
 	public String toString() {
-		return "InstructorDetail [id=" + id + ", youtube_channel=" + youtube_channel + ", hobby=" + hobby + "]";
+		return "InstructorDetail [id=" + id + ", youtubeChannel=" + youtubeChannel + ", hobby=" + hobby + "]";
 	}
-	
-	
-	
-	
+		
 }

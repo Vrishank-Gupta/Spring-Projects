@@ -8,49 +8,52 @@ import com.vrishank.utils.Course;
 import com.vrishank.utils.Instructor;
 import com.vrishank.utils.InstructorDetail;
 
-public class CreateCoursesDemo {
+public class DeleteCourseDemo {
 
 	public static void main(String[] args) {
-		SessionFactory factory = new Configuration().configure("hibernate.cfg.xml")
+
+		// create session factory
+		SessionFactory factory = new Configuration()
+								.configure("hibernate.cfg.xml")
 								.addAnnotatedClass(Instructor.class)
 								.addAnnotatedClass(InstructorDetail.class)
 								.addAnnotatedClass(Course.class)
 								.buildSessionFactory();
-
 		
+		// create session
 		Session session = factory.getCurrentSession();
 		
-		
-		try {
+		try {			
 			
-			
-			
+			// start a transaction
 			session.beginTransaction();
 			
-			//get instr from db
-			int id =1;
-			Instructor instructor = session.get(Instructor.class, id);
+			// get a course
+			int theId = 10;
+			Course tempCourse = session.get(Course.class, theId);
 			
+			// delete course
+			System.out.println("Deleting course: " + tempCourse);
 			
-			//create courses
-			Course course1 = new Course("Course 1");
-			Course course2 = new Course("Course 2");
+			session.delete(tempCourse);
 
-			
-	 		//add courses to instr
-			
-			instructor.add(course1);
-			instructor.add(course2);
-			
-			//save courses
-			session.save(course1);
-			session.save(course2);
-			
+			// commit transaction
 			session.getTransaction().commit();
-		} catch (Exception e) {
+			
+			System.out.println("Done!");
+		}
+		finally {
+			
+			// add clean up code
 			session.close();
+			
 			factory.close();
 		}
 	}
 
 }
+
+
+
+
+
