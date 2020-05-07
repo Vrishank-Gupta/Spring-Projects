@@ -52,8 +52,6 @@ public class UpdateStudentDemo {
 			//create query
 			session.createQuery("update Student s set s.email='vishuGupta@gmail.com' where s.firstName ='Vishu'").executeUpdate();
 			
-			//update object
-			student.setFirstName("Vishu");
 			
 			//commit
 			session.getTransaction().commit();

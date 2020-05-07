@@ -20,7 +20,6 @@ public class CreateStudentDemo {
 
 		
 		//get session
-		
 		Session session = factory.getCurrentSession();
 		
 		try {

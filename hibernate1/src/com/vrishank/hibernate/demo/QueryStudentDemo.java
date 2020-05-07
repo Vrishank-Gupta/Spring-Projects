@@ -37,6 +37,7 @@ public class QueryStudentDemo {
 			
 			
 			
+			@SuppressWarnings("unchecked")
 			List<Student> students = session.createQuery("from Student s where s.lastName='Gupta' ").getResultList();   //use actual class names
 
 			
